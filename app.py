@@ -15,8 +15,12 @@ app = Flask(__name__)
 ai = ExtraSuperGPTEnhancer()
 
 # Login na Polarium
-polarium = PolariumAPI(email="SEU_EMAIL", password="SUA_SENHA")
-polarium.login()
+polarium = import os
+
+polarium = PolariumAPI(
+    email=os.getenv("POLARIUM_EMAIL"),
+    password=os.getenv("POLARIUM_PASSWORD")
+)
 
 @app.route("/")
 def index():
